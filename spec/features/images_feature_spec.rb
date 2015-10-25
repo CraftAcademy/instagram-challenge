@@ -24,8 +24,21 @@ feature 'images' do
   context 'uploading images' do
     scenario ' prompts user to upload image' do
       visit '/images/new'
-      expect(page).to have_content('File to Upload')
+      expect(page).to have_content('Image to Upload')
       expect(current_path).to eq '/images/new'
+    end
+  end
+
+
+  context 'viewing images' do
+
+    let!(:vasastan){Image.create(name:'Vasastan')}
+
+    scenario 'lets a user view an image' do
+      visit '/images'
+      click_link 'Vasastan'
+      expect(page).to have_content 'Vasastan'
+      expect(current_path).to eq "/images/#{vasastan.id}"
     end
   end
 end
