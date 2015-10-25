@@ -11,6 +11,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 group :development, :test do
   gem 'pry'
   gem 'rspec-rails'
+  gem "factory_girl_rails", "~> 4.0"
+  gem 'database_cleaner', '~> 1.5.0'
   gem 'capybara'
 end
 
