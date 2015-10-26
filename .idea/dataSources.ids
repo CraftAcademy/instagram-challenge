@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source name="Rails instagram-challenge: development" uuid="3f17deed-b678-4900-84af-bd5fc7f42145">
+    <database-info product="" version="" jdbc-version="" driver-name="" driver-version=""/>
+  </data-source>
+  <data-source name="Rails instagram-challenge: test" uuid="b6c1d989-ae1c-4a20-9b95-faf200825c3a">
+    <database-info product="" version="" jdbc-version="" driver-name="" driver-version=""/>
+  </data-source>
+</component>
