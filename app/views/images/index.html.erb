@@ -1,0 +1,14 @@
+<% if @images.any? %>
+    <% @images.each do |image| %>
+        <h2> <%= link_to image.name, image_path(image) %></h2>
+        <%= link_to "Edit #{image.name}", edit_image_path(image) %>
+    <% end %>
+<% else %>
+    No images yet
+<% end %>
+
+<br><br>Add image:
+
+<%= link_to 'Add an image', new_image_path %>
+
+
