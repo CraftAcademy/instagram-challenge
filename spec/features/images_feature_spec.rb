@@ -32,13 +32,27 @@ feature 'images' do
 
   context 'viewing images' do
 
-    let!(:vasastan){Image.create(name:'Vasastan')}
+    let!(:vasastan) { Image.create(name: 'Vasastan') }
 
     scenario 'lets a user view an image' do
       visit '/images'
       click_link 'Vasastan'
       expect(page).to have_content 'Vasastan'
       expect(current_path).to eq "/images/#{vasastan.id}"
+    end
+  end
+
+  xcontext 'editing images' do
+
+    before { Image.create name: 'Vasastan' }
+
+    scenario 'lets a user change image name' do
+      visit '/images'
+      click_link 'Edit Vasastan'
+      fill_in 'Name', with: 'Sibirien'
+      click_button 'Update Image'
+      expect(page).to have_content 'Sibirien'
+      expect(currnt_path).to eq '/images'
     end
   end
 end
