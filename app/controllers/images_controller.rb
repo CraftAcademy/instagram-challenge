@@ -1,5 +1,5 @@
 class ImagesController < ApplicationController
   def index
-    raise 'Hello from the index action'
+    @images = Image.all
   end
 end
