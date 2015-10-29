@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title><%= content_for?(:title) ? yield(:title) : "foundation-rails" %></title>
+  <%= stylesheet_link_tag "application" %>
+  <%= javascript_include_tag "vendor/modernizr" %>
+  <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<div class="row">
+  <!-- Nav Section -->
+  <nav class="top-bar" data-topbar role="navigation">
+    <ul class="title-area">
+      <li class="name">
+        <h1><a href="/">Instaa!</a></h1>
+      </li>
+      <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+    </ul>
+    <section class="top-bar-section">
+      <ul class="right">
+        <li>
+          <%= link_to 'New Picture', new_picture_path %>
+        </li>
+        <% unless current_user %>
+          <li>
+            <%= link_to 'Sign in', new_user_session_path %>
+          </li>
+          <li>
+            <%= link_to 'Sign up', new_user_registration_path %>
+          </li>
+        <% end %>
+        <% if current_user %>
+          <li>
+            <%= link_to 'Sign out', destroy_user_session_path, method: :delete %>
+          </li>
+        <% end %>
+      </ul>
+      <ul class="left">
+      </ul>
+    </section>
+  </nav>
+  <!-- Flash Section -->
+  <% if flash %>
+    <% flash.each do |name, msg| %>
+      <div id="flash-container" data-alert class="alert-box <%= name.to_s == 'notice' ? 'success' : 'alert' %>">
+        <%= msg %>
+        <a href="#" class="close">&times;</a>
+      </div>
+    <% end %>
+  <% end %>
+  <!-- Yield Section -->
+  <br>
+  <%= yield %>
+  <br>
+</div>
+<!-- Scripts -->
+<script>
+  $(document).ready(function () {
+    var flash = $('#flash-container');
+    if (flash.length > 0) {
+      window.setTimeout(function () {
+        flash.fadeTo(500, 0).slideUp(500, function () {
+          $(this).remove();
+        });
+      }, 1000);
+    }
+  });
+</script>
+<script>
+  $(document).foundation();
+</script>
+</body>
+</html>

@@ -1,0 +1,20 @@
+<h1>Listing Pictures</h1>
+<div class="row">
+  <div class="small-6 small-centered columns">
+    <% @pictures.each do |picture| %>
+      <div class="panel">
+        <%= image_tag(picture.image.url(:medium)) %>
+        <br>
+        <%= picture.description %>
+        <br>
+        <small>
+          <%= link_to 'Show', picture %>
+          <%= link_to 'Edit', edit_picture_path(picture) %>
+          <%= link_to 'Destroy', picture, method: :delete, data: {confirm: 'Are you sure?'} %>
+        </small>
+      </div>
+    <% end %>
+    <br>
+    <%= button_to "New Picture", new_picture_path, :class => "button round button success button expand", method: :get %>
+  </div>
+</div>
