@@ -1,0 +1,6 @@
+<%= form_for [@post, @like] do |f| %>
+    <%= f.label :likes %>
+    <%= check_box_tag(:status) %>
+    <%= label_tag(:status, "Like this picture") %>
+    <%= f.submit %>
+<% end %>
