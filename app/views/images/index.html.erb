@@ -1,0 +1,10 @@
+<h1>Instagram-challenge</h1>
+<%= link_to "New image", new_image_path %>
+
+<% if @images.any? %>
+    <% @images.each do |image| %>
+        <h2> <%= image.name %> </h2>
+    <% end %>
+<% else %>
+    No image yet
+<% end %>
